@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+  height: 100%;
+}
+
+.text-headline {
+  font-size: 28px;
+  font-weight: 500;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
