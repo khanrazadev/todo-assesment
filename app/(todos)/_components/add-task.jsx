@@ -22,7 +22,11 @@ const AddTask = () => {
     if (!title || !description) {
       return toast.error(
         `Please fill ${
-          title ? "Task description" : description ? "Task title" : "the required fields"
+          title
+            ? "Task description"
+            : description
+            ? "Task title"
+            : "the required fields"
         }`
       );
     }
