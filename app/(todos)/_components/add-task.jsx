@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { addTodo } from "@/lib/features/todos/todosSlice";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 const AddTask = () => {
@@ -15,20 +16,27 @@ const AddTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title && !description) {
-      console.log("ERROR");
-      return;
+    console.log(!description || !title);
+
+    // Check if both title and description are empty
+    if (!title || !description) {
+      return toast.error(
+        `Please fill ${
+          title ? "Task description" : description ? "Task title" : "the required fields"
+        }`
+      );
     }
 
     const newTodo = {
-      id: Math.floor(Math.random() * 1000),
-      title: title,
-      description: description,
+      id: Math.random().toString(36).substr(2, 9),
+      title: title.trim(),
+      description: description.trim(),
       completed: false,
     };
 
     dispatch(addTodo(newTodo));
 
+    // Clear form fields
     setTitle("");
     setDescription("");
   };
