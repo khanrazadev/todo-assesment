@@ -47,19 +47,17 @@ const TaskListItem = ({
           </h1>
         )}
       </AccordionTrigger>
-      <div className="flex flex-col md:flex-row  md:items-center justify-center gap-3">
+      <div className="flex items-center md:items-center justify-center gap-3">
         {!todo.completed && (
           <MdEdit
             onClick={() => handleEdit(todo.id)}
-            className="min-w-6 cursor-pointer"
-            size={"20px"}
+            className="md:min-w-6 cursor-pointer "
           />
         )}
         <MdDelete
           onClick={() => handleDelete(todo.id)}
-          className="min-w-6 cursor-pointer"
+          className="md:min-w-6 cursor-pointer"
           color="red"
-          size={"20px"}
         />
       </div>
     </div>
