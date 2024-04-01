@@ -133,56 +133,62 @@ const TaskList = () => {
           <TabsTrigger value="done">Done</TabsTrigger>
           <TabsTrigger value="to-do">To Do</TabsTrigger>
         </TabsList>
-        <div className="w-full my-8">
-          <TabsContent value="all" className="space-y-3">
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {filteredTodos("all").map((todo) => (
-                <TaskListItem
-                  key={todo.id}
-                  todo={todo}
-                  editTodoId={editTodoId}
-                  editTodo={editTodo}
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                  handleKeyPress={handleKeyPress}
-                  handleDescriptionEdit={handleDescriptionEdit}
-                />
-              ))}
-            </Accordion>
-          </TabsContent>
-          <TabsContent value="done">
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {filteredTodos("done").map((todo) => (
-                <TaskListItem
-                  key={todo.id}
-                  todo={todo}
-                  editTodoId={editTodoId}
-                  editTodo={editTodo}
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                  handleKeyPress={handleKeyPress}
-                  handleDescriptionEdit={handleDescriptionEdit}
-                />
-              ))}
-            </Accordion>
-          </TabsContent>
-          <TabsContent value="to-do">
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {filteredTodos("to-do").map((todo) => (
-                <TaskListItem
-                  key={todo.id}
-                  todo={todo}
-                  editTodoId={editTodoId}
-                  editTodo={editTodo}
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                  handleKeyPress={handleKeyPress}
-                  handleDescriptionEdit={handleDescriptionEdit}
-                />
-              ))}
-            </Accordion>
-          </TabsContent>
-        </div>
+        {todos.length > 0 ? (
+          <div className="w-full my-8">
+            <TabsContent value="all" className="space-y-3">
+              <Accordion type="single" collapsible className="w-full space-y-3">
+                {filteredTodos("all").map((todo) => (
+                  <TaskListItem
+                    key={todo.id}
+                    todo={todo}
+                    editTodoId={editTodoId}
+                    editTodo={editTodo}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    handleKeyPress={handleKeyPress}
+                    handleDescriptionEdit={handleDescriptionEdit}
+                  />
+                ))}
+              </Accordion>
+            </TabsContent>
+            <TabsContent value="done">
+              <Accordion type="single" collapsible className="w-full space-y-3">
+                {filteredTodos("done").map((todo) => (
+                  <TaskListItem
+                    key={todo.id}
+                    todo={todo}
+                    editTodoId={editTodoId}
+                    editTodo={editTodo}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    handleKeyPress={handleKeyPress}
+                    handleDescriptionEdit={handleDescriptionEdit}
+                  />
+                ))}
+              </Accordion>
+            </TabsContent>
+            <TabsContent value="to-do">
+              <Accordion type="single" collapsible className="w-full space-y-3">
+                {filteredTodos("to-do").map((todo) => (
+                  <TaskListItem
+                    key={todo.id}
+                    todo={todo}
+                    editTodoId={editTodoId}
+                    editTodo={editTodo}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    handleKeyPress={handleKeyPress}
+                    handleDescriptionEdit={handleDescriptionEdit}
+                  />
+                ))}
+              </Accordion>
+            </TabsContent>
+          </div>
+        ) : (
+          <div className="w-full h-full md:border rounded-md my-8 flex justify-center text-slate-500 items-center">
+            <h1>Add Todos</h1>
+          </div>
+        )}
       </Tabs>
     </div>
   );
